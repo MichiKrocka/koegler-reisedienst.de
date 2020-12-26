@@ -1,0 +1,111 @@
+<img src="img/moskvina.jpg" alt="Moskvina" style="width:100%">
+<h4>Bergsteigen - Was treibt die Menschen ins Hochgebirge zu steigen?</h4>
+<p>
+Im August 2010 wurde eine Umfrage im Basislager Moskvina / Pamir / Tadjikistan durchgeführt.
+Aus diesem Lager sind gleich zwei interessante Berggipfel erreichbar:
+<ul>
+  <li>Peak Korjenevskaya (7105m)</li>
+  <li>und Peak Somoni / Kommunismus (7495m).</li>
+</ul>
+</p>
+<table style="width:100%">
+  <tr>
+    <td>
+      <div class="c_lang" style="float:left">
+        <label for="id_Org" title="Originalsprache">
+          <img src="img/de.png">
+        </label>
+        <input type="radio" name="lang" id="id_Org" value="orig" checked>
+        <label for="id_Gb" title="Englisch">
+          <img src="img/gb.png">
+        </label>
+        <input type="radio" name="lang" id="id_Gb" value="en">
+        <label for="id_De" title="Deutsch">
+          <img src="img/de.png">
+        </label>
+        <input type="radio" name="lang" id="id_De" value="deu">
+      </div>
+      <div style="float:left;margin-left:5px">
+        <a id="id_Name" style="font-size:1.2em;text-decoration:none;color:black" href=""></a>
+      </div>
+      <div class="c_navig" style="float:right;">
+        <button data-choice="FIRST" title="Der erste Eintrag">
+          <i class="fa fa-fast-backward"></i>
+        </button>
+        <button data-choice="PREV" title="Der vorherige Eintrag">
+          <i class="fa fa-backward"></i>
+        </button>
+        <button data-choice="NEXT" title="Der nächste Eintrag">
+          <i class="fa fa-forward"></i>
+        </button>
+        <button data-choice="LAST" title="Der letzte Eintrag">
+          <i class="fa fa-fast-forward"></i>
+        </button>
+      </div>
+      <div id="id_Ix" style="float:right;margin-right:10px"></div>
+    </td>
+  </tr>
+  <tr>
+    <td id="id_Text" style="background-color:#E5E5E5;vertical-align:top">
+    </td>
+  </tr>
+</table>
+<script language="JavaScript" type="text/javascript">
+// #####################################################################
+var moskvina = [],
+    ix = 0;
+// #####################################################################
+jQuery(function($){
+  $.post('data/moskvina.json', make, 'json');
+});
+// #####################################################################
+function make(D){
+  moskvina = D;
+  $("input[type=radio]", "#id_Cont").checkboxradio({
+    icon: false
+  })
+  .change(function(ev){
+    change();
+  });
+  $(".c_lang", "#id_Cont")
+  .controlgroup();
+  change();
+  $(".c_navig button", "#id_Cont")
+  .button()
+  .click(function(ev){
+    var c = $(this).data('choice');
+    switch(c){
+      case "FIRST":
+        ix = 0;
+        break;
+      case "PREV":
+        ix--;
+        if(ix < 0)
+          ix = 0;
+        break;
+      case "NEXT":
+        ix++;
+        if(ix >= moskvina.length)
+          ix = moskvina.length - 1;
+        break;
+      case "LAST":
+        ix = moskvina.length - 1;
+        break;
+    }
+    change();
+  });
+  $(".c_navig", "#id_Cont")
+  .controlgroup();
+}
+// #####################################################################
+function change(){
+  $('label[for=id_Org] img', '#id_Cont')
+  .prop('src', 'img/' + moskvina[ix].country.toLowerCase() + '.png');
+  $('#id_Name')
+  .text(moskvina[ix].name + ' / ' + moskvina[ix].country)
+  .prop('href', 'mailto:'+moskvina[ix].email);
+  $('#id_Ix').text((ix + 1) + " / " + moskvina.length);
+  $('#id_Text').text(moskvina[ix][$('input[name=lang]:checked').val()]);
+}
+// #####################################################################
+</script>

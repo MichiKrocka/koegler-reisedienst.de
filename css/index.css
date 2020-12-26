@@ -1,0 +1,90 @@
+html,
+body {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+  border:0;
+  font-size:1em;
+  overflow:hidden;
+  font-family:verdana, helvetica;
+}
+#id_Layout {
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
+  height:100%;
+  width:100%;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:0;
+  padding:0;
+  border-collapse: collapse;
+  font-size:1.3em;
+}
+#id_Menu {
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
+  min-width:10em;
+  height:100%;
+  width:1%;
+  vertical-align:top;
+  font-style:italic;
+}
+#id_Cont {
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
+  height:100%;
+  margin:0;
+  padding:2px 3px 0 5px;
+  overflow:hidden;
+  vertical-align:top;
+}
+.ui-menu li {
+  border:0 !important;
+}
+.ui-menu div {
+  white-space:nowrap;
+}
+
+table.reise {
+  width:100%
+}
+table.reise caption {
+  background:#CCCCCC
+}
+table.reise .even {
+  background:#DDDDDD
+}
+table.reise .odd {
+  background:#EEEEEE
+}
+table.reise td {
+  width:20%
+}
+
+table.kontakt {
+  width:100%;
+  border:0;
+}
+table.kontakt input[type=text],
+table.kontakt textarea {
+  width:100%;
+  font-size:1em;
+  border:0;
+}
+table.kontakt td {
+  white-space:nowrap;
+}
+table.kontakt td.input {
+  border:1px solid silver;
+}
+table.kontakt input {
+  font-size:1em;
+}

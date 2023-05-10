@@ -56,7 +56,7 @@ var moskvina = [],
     ix = 0;
 // #####################################################################
 jQuery(function($){
-  $.post('data/moskvina.json', make, 'json');
+  $.get('data/moskvina.json', make, 'json');
 });
 // #####################################################################
 function make(D){
